@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            text-align: center;
+        }
+        .total {
+            font-weight: bold;
+        }
+        .back-to-cart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Invoice</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="bill-items">
+                <!-- Items will be added dynamically -->
+            </tbody>
+        </table>
+        <p class="text-right total">Total Amount: $<span id="total-amount">0.00</span></p>
+        <div class="text-center back-to-cart">
+            <a href="cart.html" class="btn btn-secondary">Back to Cart</a>
+        </div>
+    </div>
+
+    <script>
+        function loadBill() {
+            var billItems = document.getElementById('bill-items');
+            var totalAmount = document.getElementById('total-amount');
+            var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            var total = 0;
+
+            cartItems.forEach(function(item) {
+                var row = document.createElement('tr');
+                row.innerHTML = `<td>${item.name}</td><td>${item.quantity}</td><td>$${item.price.toFixed(2)}</td><td>$${(item.price * item.quantity).toFixed(2)}</td>`;
+                billItems.appendChild(row);
+                total += item.price * item.quantity;
+            });
+
+            totalAmount.textContent = total.toFixed(2);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadBill);
+    </script>
+</body>
+</html>

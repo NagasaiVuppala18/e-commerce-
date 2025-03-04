@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("login.jpg");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        .container {
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.979);
+            background-color: #00000022;
+            background-blend-mode: lighten;            
+        }
+        .signup-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center" style="color: #f8f9fa;">Login</h2>
+        <form id="loginForm" action="login.jsp" method="post">
+            <div class="form-group">
+                <label for="login-username" style="color: #f8f9fa;">Username</label>
+                <input type="text" class="form-control" id="login-username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password" style="color: #f8f9fa;">Password</label>
+                <input type="password" class="form-control" id="login-password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    
+        <div class="signup-link">
+            <p style="color: #f8f9fa;">Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Redirect to the home page directly
+            window.location.href = 'home.html'; // Redirect to the home page
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .cart-item div {
+            flex: 1;
+        }
+        .cart-item .item-name {
+            text-align: left;
+        }
+        .cart-item .item-quantity {
+            text-align: center;
+        }
+        .cart-item .item-price {
+            text-align: right;
+        }
+        .total {
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Shopping Cart</h2>
+        <div id="cart-items">
+            <!-- Cart items will be added dynamically -->
+        </div>
+        <p class="total">Total: $<span id="cart-total">0.00</span></p>
+        <a href="bill.html" class="btn btn-primary btn-block" id="checkout-button">Checkout</a>
+    </div>
+
+    <script>
+        function loadCart() {
+            var cartItemsDiv = document.getElementById('cart-items');
+            var totalSpan = document.getElementById('cart-total');
+            var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            var total = 0;
+
+            cartItemsDiv.innerHTML = ''; // Clear existing items
+
+            cartItems.forEach(function(item) {
+                var itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `<div class="item-name">${item.name}</div><div class="item-quantity">${item.quantity}</div><div class="item-price">$${item.price.toFixed(2)}</div>`;
+                cartItemsDiv.appendChild(itemDiv);
+                total += item.price * item.quantity;
+            });
+
+            totalSpan.textContent = total.toFixed(2);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+</body>
+</html>

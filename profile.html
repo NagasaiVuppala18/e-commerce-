@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            margin-top: 0;
+        }
+        .sidebar a {
+            color: white;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+        .sidebar .settings {
+            margin-top: auto;
+            border-top: 1px solid #495057;
+            padding-top: 10px;
+        }
+        .sidebar .logout {
+            border-top: 1px solid #495057;
+            padding-top: 10px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .logout i {
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+            width: calc(100% - 260px);
+        }
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Profile</h2>
+        <div class="profile-info">
+            <p><strong>Username:</strong> <span id="profile-username"></span></p>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+        </div>
+        <a href="home.html">Home</a>
+        <a href="discounts.html">Discounts</a>
+        <a href="mobiles.html">Mobiles</a>
+        <a href="laptops.html">Laptops</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="cart.html">Cart</a>
+        <div class="logout" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </div>
+        <div class="settings">
+            <p id="settings"><a href="settings.html">Settings  <i class="fas fa-cog"></i> </a></p>
+        </div>
+    </div>
+    <div class="main-content">
+        <h1>Welcome, <span id="profile-username-main"></span></h1>
+        <p>This is your profile page. You can view and edit your information here.</p>
+        <!-- Additional profile content goes here -->
+    </div>
+
+    <script>
+        // Retrieve user information from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            var username = localStorage.getItem('username');
+            var email = localStorage.getItem('email');
+
+            if (username && email) {
+                document.getElementById('profile-username').textContent = username;
+                document.getElementById('profile-email').textContent = email;
+                document.getElementById('profile-username-main').textContent = username;
+            } else {
+                document.getElementById('profile-username').textContent = 'Guest';
+                document.getElementById('profile-email').textContent = 'Not available';
+                document.getElementById('profile-username-main').textContent = 'Guest';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('username');
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+    </script>
+</body>
+</html>

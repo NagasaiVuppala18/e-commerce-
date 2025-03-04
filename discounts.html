@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .navbar-nav {
+            flex-direction: row;
+        }
+        .navbar-nav .nav-item {
+            margin-left: 20px;
+        }
+        .navbar-nav .nav-item:last-child {
+            margin-left: auto;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="home.html">Home</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="discounts.html">Discounts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mobiles.html">Mobiles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="laptops.html">Laptops</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="accessories.html">Accessories</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">Profile</a>
+                </li>
+            </ul>
+        </div>
+        <a href="cart.html" class="cart-icon" title="View Cart">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center">discounts</h1>
+        <p class="text-center">Explore our range of products and enjoy the best deals.</p>
+        <!-- Additional home page content goes here -->
+    </div>
+
+    <footer class="footer">
+        <p><a href="terms.html" class="text-white">Terms and Conditions</a> | <a href="contact.html" class="text-white">Contact</a> | &copy; 2024 Your Company</p>
+        <p>Address: 1234 Elm Street, Your City, Your Country</p>
+        <p>"Electronics that empower your life."</p>
+    </footer>
+</body>
+</html>
